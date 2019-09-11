@@ -1,0 +1,200 @@
+'If you want to know the name and directory path of the activeworkbook, use a statement like this:
+MsgBox ActiveWorkbook.FullName
+
+'To find out how many cells are selected in the active window, access the Count property. Here's an example:
+MsgBox ActiveWindow.RangeSelection.Count
+
+Worksheets(“Sheet1”).Range(“A1”).Value = 12.3
+Worksheets(“Sheet1”).Range(“Input”).Value = 100
+ActiveSheet.Range(“A1:B10”).Value = 2
+Range(“A1”, “B10”) = 2
+Range(“C1:C10 A6:E6”) = 3
+
+And finally, this next example enters the value 4 in five cells: that is, a noncontiguous range. The comma serves as the union operator. 
+Note that the commas are within the quote marks.
+
+Range(“A1,A3,A5,A7,A9”) = 4
+
+Following is an example of using the Range property on a Range
+object. (In this case, the Range object is the active cell.) This example
+treats the Range object as if it were the upper-left cell in the
+worksheet, and then it enters a value of 5 in the cell that would be B2.
+In other words, the reference returned is relative to the upper-left
+corner of the Range object. Therefore, the statement that follows
+enters a value of 5 into the cell directly to the right and one row below
+the active cell:
+
+ActiveCell.Range(“B2”) = 5
+
+Function ContainsMergedCells(rng As Range)
+Dim cell As Range
+For Each cell In rng
+If cell.MergeCells Then
+ContainsMergedCells = True
+Exit Function
+End If
+Next cell
+ContainsMergedCells = False
+End Function
+
+a value of 2000 is entered in cell A2
+because A2 is the fifth cell (counting from the top, to the right, and
+then down) in the referenced range:
+
+Range(“A1:D10”).Cells(5) = 2000
+
+ActiveSheet.Cells.ClearContents
+
+Workbooks(“Myfile.xlsx”)
+
+Range(“A1”).Font.Bold = True
+
+Workbooks(“Sales.xlsx”).Worksheets(“Summary”)
+Workbooks(1).Worksheets(1)
+Workbooks(1).Sheets(1)
+Application.ActiveWorkbook.ActiveSheet
+ActiveWorkbook.ActiveSheet
+ActiveSheet
+
+Sub OneLine()
+x= 1: y= 2: z= 3: MsgBox x + y + z
+End Sub
+
+Sub MultipleLines()
+x = 1
+y = 2
+z = 3
+MsgBox x + y + z
+End Sub
+
+Sub TimeTest()
+Dim x As Long, y As Long
+Dim A As Double, B As Double, C As Double
+Dim i As Long, j As Long
+Dim StartTime As Date, EndTime As Date
+‘ Store the starting time
+StartTime = Timer
+‘ Perform some calculations
+x = 0
+y = 0
+For i = 1 To 10000
+x = x + 1
+y = x + 1
+For j = 1 To 10000
+A = x + y + i
+B = y - x - i
+C = x / y * i
+Next j
+Next i
+‘ Get ending time
+EndTime = Timer
+‘ Display total time in seconds
+MsgBox Format(EndTime - StartTime, “0.0”)
+End Sub
+
+Sub VariantDemo3()
+MyVar = True
+MsgBox TypeName(MyVar)
+MyVar = MyVar * 100
+MsgBox TypeName(MyVar)
+MyVar = MyVar / 4
+MsgBox TypeName(MyVar)
+MyVar = “Answer: “ & MyVar
+MsgBox TypeName(MyVar)
+MsgBox MyVar
+End Sub
+
+Scope To Declare a Variable with This Scope
+Single procedure
+Include a Dim or Static statement within the procedure.
+Single module
+Include a Dim or Private statement before the first
+procedure in a module.
+All modules
+Include a Public statement before the first procedure in a
+module.
+
+Static variables
+Static variables are a special case. They're declared at the procedure
+level, and they retain their value when the procedure ends normally.
+However, if the procedure is halted by an End statement, static
+variables do lose their values. Note that an End statement is not the
+same as an End Sub statement.
+You declare static variables by using the Static keyword:
+Sub MySub()
+Static Counter as Long
+‘- [Code goes here] -
+End Sub
+
+Const NumQuarters as Integer = 4
+Const Rate = .0725, Period = 12
+Const ModName as String = “Budget Macros”
+Public Const AppName as String = “Budget
+Application”
+
+ActiveSheet.PageSetup.Orientation =
+xlLandscape
+
+In many cases,
+VBA lists all the constants that you can assign to a property.
+
+Dim MyString As String * 50
+Dim YourString As String
+
+Const FirstDay As Date = #1/1/2013#
+Const Noon = #12:00:00#
+
+Not Performs a logical negation on an expression
+And Performs a logical conjunction on two expressions
+Or Performs a logical disjunction on two expressions
+Xor Performs a logical exclusion on two expressions
+Eqv Performs a logical equivalence on two expressions
+Imp Performs a logical implication on two expressions
+
+The following instruction uses the Not operator to toggle the gridline
+display in the active window. The DisplayGridlines property takes a
+value of either True or False. Therefore, using the Not operator
+changes False to True and True to False.
+ActiveWindow.DisplayGridlines = Not
+
+MsgBox statement displays True only when Sheet1 is the active sheet
+and the active cell is in Row 1. If either or both of these conditions
+aren't true, the MsgBox statement displays False.
+MsgBox ActiveSheet.Name = “Sheet1” And
+ActiveCell.Row = 1
+
+When you declare an array, you need to specify only
+the upper index, in which case VBA assumes that 0
+is the lower index. Therefore, the two statements
+that follow have the same effect:
+Dim MyArray(0 to 100) As Integer
+Dim MyArray(100) As Integer
+
+Dim MyArray(1 to 10, 1 to 10) as Integer
+MyArray(3, 4) = 125
+
+A dynamic array doesn't have a preset number of elements. You
+declare a dynamic array with a blank set of parentheses:
+Dim MyArray() As Integer
+ReDim MyArray (1 To x)
+ReDim Preserve MyArray (1 To y)
+
+InputArea as a Range object variable:
+Dim InputArea As Range
+Use the Set keyword to assign an object to the variable. For example:
+Set InputArea = Range(“C16:E16”)
+
+VBA lets you create custom, or user-defined, data types. A userdefined data type can ease your work with some types of data. For
+example, if your application deals with customer information, you
+may want to create a user-defined data type named CustomerInfo:
+Type CustomerInfo
+Company As String
+Contact As String
+RegionCode As Long
+Sales As Double
+End Type
+
+
+
+
+
